@@ -11,7 +11,6 @@ const getMunicipios = async () => {
             nest: true,
             include: [modelMunicipios.Estado]
             
-
         });
     } catch (error) {
         console.log(error);

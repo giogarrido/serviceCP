@@ -58,7 +58,7 @@ const Ciudad = sequelize.define("ciudades", { // Define the "ciudades" table
 });
 
 const CodigoPostal = sequelize.define("codigos_postales", { // Define the "codigos" table
-    id_codigo: {
+    id_codigo_postal: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -111,6 +111,7 @@ module.exports = {
     CodigoPostal,
     Colonia,
 };
+
 
 
 
