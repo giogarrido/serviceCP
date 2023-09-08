@@ -1,4 +1,4 @@
-const modelMunicipios = require('../models/municipios.model');
+const modelMunicipios = require('../models/municipios.models');
 
 
 const getMunicipios = async () => {

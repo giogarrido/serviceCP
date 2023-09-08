@@ -1,5 +1,5 @@
 const express = require('express');
-const serviceCodigosPostales = require('../services/codigosPostales.service');
+const serviceCodigosPostales = require('../services/codigosPostales.services');
 
 const router = express.Router();
 

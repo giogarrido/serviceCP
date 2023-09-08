@@ -93,7 +93,7 @@ const Colonia = sequelize.define("colonias", { // Define the "colonias" table
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    id_codigo: {
+    id_codigo_postal: {
         type: DataTypes.INTEGER,
         allowNull: false,
     }

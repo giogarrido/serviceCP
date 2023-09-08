@@ -1,15 +1,17 @@
 const express = require("express");
-const estadosRouter = require('./routes/estados.routes.js');
-const municipiosRouter = require('./routes/municipios.routes.js');
-const codigosPostales = require('./routes/codigosPostales.routes.js');
+const estadosRoutes = require('./routes/estados.routes.js');
+const municipiosRoutes = require('./routes/municipios.routes.js');
+const codigosPostalesRoutes = require('./routes/codigosPostales.routes.js');
+const ciudadesRoutes = require('./routes/ciudades.routes.js');
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/estados', estadosRouter);
-app.use('/municipios', municipiosRouter);
-app.use('/codigospostales', codigosPostales);
+app.use('/estados', estadosRoutes);
+app.use('/municipios', municipiosRoutes);
+app.use('/codigospostales', codigosPostalesRoutes);
+app.use('/ciudades', ciudadesRoutes);
 
 
 app.use((req, res) => {

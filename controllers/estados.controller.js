@@ -1,4 +1,4 @@
-const modelEstados = require("../models/estados.model.js");
+const modelEstados = require("../models/estados.models.js");
 
 const getEstados = async () => { 
   try {
