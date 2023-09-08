@@ -1,4 +1,4 @@
-const   controlCodigosPostales = require('../controllers/codigosPostales.controller.js');
+const   controlCodigosPostales = require('../controllers/codigosPostales.controllers.js');
 const asyncError = require('../utilities/asyncError.js');
 const CustomeError = require('../utilities/customeError.js');
 

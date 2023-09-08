@@ -1,4 +1,4 @@
-const controlCiudades = require('../controllers/ciudades.controller');
+const controlCiudades = require('../controllers/ciudades.controllers');
 const asyncError = require('../utilities/asyncError.js');
 const CustomeError = require('../utilities/customeError.js');
 
