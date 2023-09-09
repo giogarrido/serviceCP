@@ -38,12 +38,6 @@ const getMunicipio = async (id) => {
 };
 
 
-
-
-        
-
-
-
 module.exports = {
     getMunicipios,
     getMunicipio,

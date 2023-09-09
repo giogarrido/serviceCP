@@ -24,3 +24,14 @@ exports.getCodigoPostal = asyncError(async (req, res, next) => {
     });
 });
 
+exports.getColoniasByCodigoPostal = asyncError(async (req, res, next) => {
+    const colonias = await controlCodigosPostales.getColoniasByCodigoPostal(req.params.cp);
+    if (!colonias) {
+        return next(new CustomeError('No se encontraron colonias', 404));
+    }
+    res.status(200).json({
+        success: true,
+        data: colonias
+    });
+});
+

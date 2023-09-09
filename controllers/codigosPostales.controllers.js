@@ -35,8 +35,41 @@ const getCodigoPostal = async (id) => {
     }
 };
 
+const getColoniasByCodigoPostal = async (cp) => {
+    try{
+        const codigoPostal = await modelCodigosPostales.CodigoPostal.findOne({
+            where: {
+                codigo_postal: cp,
+            },
+            raw: false,
+            nest: true,
+            include: [
+                {
+                    model: modelCodigosPostales.Colonia,
+                    required: true,
+                },
+            ],
+        });
+        const colonias = [];
+        for (const colonia of codigoPostal.colonias) {
+            colonias.push(colonia.nombre_colonia);  
+        }
+        const result = {
+            id_codigo_postal: codigoPostal.id_codigo_postal,
+            codigo_postal: codigoPostal.codigo_postal,
+            colonias: colonias,
+        };
+        return result;
+    } catch (error) {
+        console.error(error);
+        return error.message;
+    }
+};
+
+
 module.exports = {
     getCodigosPostales,
-    getCodigoPostal
+    getCodigoPostal,
+    getColoniasByCodigoPostal
 };
 

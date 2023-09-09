@@ -20,3 +20,4 @@ exports.getCiudad = asyncError(async (req, res, next) => {
         data: ciudad
     });
 });
+
