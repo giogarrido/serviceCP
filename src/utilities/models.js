@@ -17,6 +17,11 @@ const Estado = sequelize.define("estados", { // Define the "estados" table
     freezeTableName: true, // Use the same table name
     tableName: "estados", // Use the same table name
     underscored: true,  // Use snake_case not camelCase
+    name:{
+        singular: 'estado',
+plural: 'estados'
+        
+    }
 });
 
 const Municipio = sequelize.define("municipios", { // Define the "municipios" table

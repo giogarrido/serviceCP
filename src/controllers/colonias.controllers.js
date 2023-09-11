@@ -22,7 +22,7 @@ const getColonias = async () => {
 
 const getColonia = async (id) => {
   try {
-    return await modelColonias.Colonia.findOne({
+    const colonia_pre = await modelColonias.Colonia.findOne({
       raw: true,
       where: {
         id_colonia: id,
@@ -33,6 +33,13 @@ const getColonia = async (id) => {
       nest: true,
       include: [modelColonias.Ciudad, modelColonias.CodigoPostal],
     });
+    console.log(colonia_pre);
+    const id_municipio=colonia_pre.codigos_postale.id_municipio;
+    console.log(id_municipio);
+    const municipio=await getMunicipio.getMunicipio(id_municipio);
+    delete colonia_pre.codigos_postale.id_municipio;
+    colonia_pre.codigos_postale.municipio=municipio;
+    return colonia_pre;
   } catch (error) {
     console.log(error);
     throw new Error("Error en la consulta de colonias");
