@@ -1,6 +1,6 @@
 const modelCodigosPostales = require("../models/codigosPostales.models");
 const getColonias = require("../controllers/colonias.controllers");
-const { col } = require("sequelize");
+
 
 const getCodigosPostales = async () => {
   try {
@@ -39,7 +39,7 @@ const getCodigoPostal = async (id) => {
 
 const getColoniasByCodigoPostal = async (cp) => {
   try {
-    const codigoPostal = await modelCodigosPostales.CodigoPostal.findOne({
+    const codigoPostal_pre = await modelCodigosPostales.CodigoPostal.findOne({
       where: {
         codigo_postal: cp,
       },
@@ -58,7 +58,7 @@ const getColoniasByCodigoPostal = async (cp) => {
     const colonias = [];
 
 
-    for (const colonia of codigoPostal.colonias) {
+    for (const colonia of codigoPostal_pre.colonias) {
         
       colonias.push(colonia);
     }
@@ -73,20 +73,25 @@ const getColoniasByCodigoPostal = async (cp) => {
 
     });
 
-    const codigoPstal_str = JSON.stringify(codigoPostal);
-    const codigoPostal2 = JSON.parse(codigoPstal_str);
+    const codigoPstal_str = JSON.stringify(codigoPostal_pre);
+    const codigoPostal = JSON.parse(codigoPstal_str);
 
-    delete codigoPostal2.colonias;
-    delete codigoPostal2.id_municipio;
+    delete codigoPostal.colonias;
+    delete codigoPostal.id_municipio;
+
+    const municipio_str = JSON.stringify(colonia.municipio);
+    const municipio = JSON.parse(municipio_str);
+    delete municipio.estado;
 
 
 
     const result = {
-      //id_codigo_postal: codigoPostal.id_codigo_postal,
-      codigo_postal: codigoPostal2,//.codigo_postal,
+      //id_codigo_postal: codigoPostal_pre.id_codigo_postal,
+      codigo_postal: codigoPostal,//.codigo_postal,
       colonias:  colonias,
       ciudad: colonia.ciudad,
-      estado: colonia.codigo_postal.municipio.estado,
+      municipio: municipio,
+      estado: colonia.estado,
     };
     return result;
   } catch (error) {
