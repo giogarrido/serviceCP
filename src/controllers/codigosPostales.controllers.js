@@ -73,12 +73,17 @@ const getColoniasByCodigoPostal = async (cp) => {
 
     });
 
+    const codigoPstal_str = JSON.stringify(codigoPostal);
+    const codigoPostal2 = JSON.parse(codigoPstal_str);
+
+    delete codigoPostal2.colonias;
+    delete codigoPostal2.id_municipio;
 
 
 
     const result = {
-      id_codigo_postal: codigoPostal.id_codigo_postal,
-      codigo_postal: codigoPostal.codigo_postal,
+      //id_codigo_postal: codigoPostal.id_codigo_postal,
+      codigo_postal: codigoPostal2,//.codigo_postal,
       colonias:  colonias,
       ciudad: colonia.ciudad,
       estado: colonia.codigo_postal.municipio.estado,
