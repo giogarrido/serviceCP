@@ -2,7 +2,7 @@ const modelColonias = require("../models/colonias.models");
 const modeloCodigosPostales = require("../models/codigosPostales.models");
 const modeloCiudades = require("../models/ciudades.models");
 const getMunicipio = require("../controllers/municipios.controller");
-const { get } = require("../routes/colonias.routes");
+//const { get } = require("../routes/colonias.routes");
 
 const getColonias = async () => {
   try {
@@ -33,12 +33,12 @@ const getColonia = async (id) => {
       nest: true,
       include: [modelColonias.Ciudad, modelColonias.CodigoPostal],
     });
-    console.log(colonia_pre);
-    const id_municipio=colonia_pre.codigos_postale.id_municipio;
-    console.log(id_municipio);
-    const municipio=await getMunicipio.getMunicipio(id_municipio);
-    delete colonia_pre.codigos_postale.id_municipio;
-    colonia_pre.codigos_postale.municipio=municipio;
+    //console.log(colonia_pre);
+    const id_municipio=colonia_pre.codigo_postal.id_municipio;
+    //console.log(id_municipio);
+    const municipio=await getMunicipio.getMunicipio(id_municipio); 
+    delete colonia_pre.codigo_postal.id_municipio;  
+    colonia_pre.codigo_postal.municipio=municipio;  
     return colonia_pre;
   } catch (error) {
     console.log(error);
